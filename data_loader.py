@@ -1,11 +1,11 @@
+from google import genai
+from google.genai import types
+
 import os
 from llama_index.readers.file import PDFReader
 from llama_index.core.node_parser import SentenceSplitter 
 from dotenv import load_dotenv
 load_dotenv()
-
-from google import genai
-from google.genai import types
 
 client = genai.Client(api_key = os.getenv("GEMINI_API_KEY"))
 

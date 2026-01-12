@@ -3,17 +3,15 @@ import logging
 from fastapi import FastAPI
 import inngest         
 import inngest.fast_api
-from inngest.experimental import ai
 from dotenv import load_dotenv
 import uuid
-import datetime
 
 from openai import OpenAI
 
 from data_loader import embed_texts, load_and_chunk_pdf
 from vector_db import QdrantStorage
 
-from custom_types import RAGChunkAndSrc, RAGSearchResult, RAGUpsertResult, RAQQueryResult 
+from custom_types import RAGChunkAndSrc, RAGSearchResult, RAGUpsertResult
 
 load_dotenv()
 
@@ -37,8 +35,8 @@ async def rag_ingest_pdf(ctx: inngest.Context):
     def _load(ctx: inngest.Context) -> RAGChunkAndSrc:
         pdf_path = ctx.event.data["pdf_path"]
         source_id = ctx.event.data.get("source_id", pdf_path)
-        chunks = load_and_chunk_pdf(pdf_path)
-        return RAGChunkAndSrc(chunks=chunks, source_id=source_id)
+        chunks = load_and_chunk_pdf(str(pdf_path))
+        return RAGChunkAndSrc(chunks=chunks, source_id=str(source_id))
 
     def _upsert(chunks_and_src: RAGChunkAndSrc) -> RAGUpsertResult:
         chunks = chunks_and_src.chunks
