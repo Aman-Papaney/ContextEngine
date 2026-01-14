@@ -5,7 +5,7 @@ import inngest
 import inngest.fast_api
 from dotenv import load_dotenv
 import uuid
-
+import datetime
 from openai import OpenAI
 
 from data_loader import embed_texts, load_and_chunk_pdf
@@ -29,6 +29,17 @@ inngest_client = inngest.Inngest(
 
 @inngest_client.create_function(
     fn_id="RAG: PDF Ingestion",
+    throttle=inngest.Throttle(
+        limit=1,
+        period=datetime.timedelta(seconds=5),
+        key="event.data.user_id",
+        burst=2,
+      ),
+      rate_limit=inngest.RateLimit(
+          limit=10,
+          period=datetime.timedelta(hours=1),
+          key="event.data.company_id",
+        ),
     trigger=inngest.TriggerEvent(event="rag/ingest_pdf")
 )
 async def rag_ingest_pdf(ctx: inngest.Context):
@@ -53,6 +64,11 @@ async def rag_ingest_pdf(ctx: inngest.Context):
     
 @inngest_client.create_function(
     fn_id="RAG: Query PDF",
+    rate_limit=inngest.RateLimit(
+        limit=20,
+        period=datetime.timedelta(hours=1),
+        key="event.data.company_id",
+      ),
     trigger=inngest.TriggerEvent(event="rag/query_pdf_ai")
 )
 async def rag_query_pdf_ai(ctx: inngest.Context):
