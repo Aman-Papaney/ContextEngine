@@ -3,7 +3,10 @@
 
 &nbsp;
 ![Home Screen](./assets/home.png "Home Screen")
+
 ![Ingest and Ask](./assets/ask.png "Ingest and Ask")
+<img width="1600" height="777" alt="home" src="https://github.com/user-attachments/assets/2fe2b002-f9d9-4f38-9c78-07046b5c2b4a" />
+
 ![Answer](./assets/answer.png "Answer")
 
 # ✨ Key Features
