@@ -33,14 +33,10 @@ class QdrantStorage:
         sources = set()
         
         for r in results:
-            # print(f"-------results------{r}")
             payload = r[1][0].payload
-            # print(f"-------payload------{payload}")
-            # print(f"-------payload type------{type(payload)}")
             text = payload.get("text","")
             source = payload.get("source","")
             if text:
                 contexts.append(text)
                 sources.add(source) 
-        # print(f'--------"contexts":{contexts}, "sources":{list(sources)}')
         return {"contexts":contexts, "sources":list(sources)}

@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 import uuid
 import datetime
 from openai import OpenAI
+from fastapi.middleware.cors import CORSMiddleware
+
 
 from data_loader import embed_texts, load_and_chunk_pdf
 from vector_db import QdrantStorage
@@ -111,5 +113,16 @@ async def rag_query_pdf_ai(ctx: inngest.Context):
     return {"answer": answer, "sources": found.sources, "num_contexts": len(found.contexts)}
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy", "version": "1.0.0"}
 
 inngest.fast_api.serve(app, inngest_client, [rag_ingest_pdf, rag_query_pdf_ai]) 
