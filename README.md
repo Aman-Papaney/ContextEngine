@@ -32,13 +32,19 @@
 ```sh
 git clone https://github.com/Aman-Papaney/ContextEngine.git
 cd ContextEngine
-pip install -r requirements.txt
+pip install . 
 ```
 ##### 2. Environment Setup: Create a .env file:
 
 LLM_API_KEY = 
+
+
 QDRANT_API_KEY = 
+
+
 QDRANT_CLUSTER_ENDPOINT = 
+
+
 GEMINI_API_KEY = 
 
 ##### 3. Launch Services

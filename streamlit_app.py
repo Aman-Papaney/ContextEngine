@@ -57,7 +57,7 @@ st.divider()
 st.title("Ask a question about your PDFs")
 
 
-async def send_rag_query_event(question: str, top_k: int) -> None:
+async def send_rag_query_event(question: str, top_k: int):
     client = get_inngest_client()
     result = await client.send(
         inngest.Event(
