@@ -2,12 +2,14 @@
 ##### ContextEngine is a production-grade Retrieval-Augmented Generation (RAG) implementation designed for reliable, scalable AI workflows. While most RAG implementations are simple scripts, ContextEngine is built with durable execution, rate limiting, and throttling to handle real-world document processing at scale.
 
 &nbsp;
-![Home Screen](./assets/home.png "Home Screen")
+Home Screen
+<img width="1600" height="777" alt="Home Screen" src="https://github.com/user-attachments/assets/2fe2b002-f9d9-4f38-9c78-07046b5c2b4a" />
 
-![Ingest and Ask](./assets/ask.png "Ingest and Ask")
-<img width="1600" height="777" alt="home" src="https://github.com/user-attachments/assets/2fe2b002-f9d9-4f38-9c78-07046b5c2b4a" />
+Ingest and Ask
+<img width="1600" height="779" alt="Ingest and Ask" src="https://github.com/user-attachments/assets/595c7187-b379-46c8-bea3-70eb2b59af81" />
 
-![Answer](./assets/answer.png "Answer")
+Answer
+<img width="1600" height="758" alt="Answer" src="https://github.com/user-attachments/assets/97b62540-f1dc-41cc-b10a-7c3ac8f8b2d5" />
 
 # ✨ Key Features
 - Durable Orchestration: Powered by Inngest, ensuring document ingestion never fails silently. Supports auto-retries, state persistence, and event-driven triggers.
