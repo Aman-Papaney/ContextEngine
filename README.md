@@ -57,18 +57,18 @@ Terminal 1: Inngest
 
 
  ```sh
-inngest dev
+npx inngest-cli@latest dev -u http://127.0.0.1:8000/api/inngest --no-discovery
 ```
 
 Terminal 2: FastAPI
 
 
  ```sh
-uvicorn main:app --reload
+ uv run uvicorn main:app
 ```
 
  Terminal 3: Streamlit
 
  ```sh
-streamlit run app.py
+uv run streamlit run streamlit_app.py
 ```
